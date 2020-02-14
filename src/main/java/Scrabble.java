@@ -1,72 +1,66 @@
 import java.util.Scanner;
 
-public class Scrabble {
-        /*
-    (1 point)-A, E, I, O, U, L, N, S, T, R
-    (2 points)-D, G
-    (3 points)-B, C, M, P
-    (4 points)-F, H, V, W, Y
-    (5 points)-K
-    (8 points)- J, X
-    (10 points)-Q, Z
-     */
-
+public class Scrabble
+{
     private int totalScore;
     private String word;
 
-    public Scrabble(String word) {
+    public Scrabble(String word)
+    {
         this.totalScore = totalScore;
         this.word = word;
     }
 
     public int calcScrabbleWord()
     {
-        word = word.toUpperCase();
+        String upperCaseWord = word.toUpperCase();
         char letter;
-        for (int i = 0; i < word.length(); i++) {
-            letter = word.charAt(i);
 
-            if ((letter =='A'|| letter =='E'|| (letter == 'I') || (letter == 'O') || (letter == 'U') || (letter == 'L') || (letter == 'N') || (letter == 'R') || (letter == 'S') || (letter == 'T'))) {
-                totalScore = totalScore +1;
+        for (int i = 0; i < upperCaseWord.length(); i++)
+        {
+            letter = upperCaseWord.charAt(i);
+
+            if ((letter =='A'|| letter =='E'|| (letter == 'I') || (letter == 'O') || (letter == 'U') || (letter == 'L') || (letter == 'N') || (letter == 'R') || (letter == 'S') || (letter == 'T')))
+            {
+                totalScore += 1;
             }
 
-            if (letter =='G' || letter =='D') {
-                totalScore = totalScore +2;
+            if (letter =='G' || letter =='D')
+            {
+                totalScore += 2;
             }
 
-            if (letter == 'B' || letter == 'C' || letter == 'M' || letter == 'P') {
+            if (letter == 'B' || letter == 'C' || letter == 'M' || letter == 'P')
+            {
                 totalScore += 3;
             }
-            if (letter == 'F' || letter == 'H' || letter == 'V' || letter == 'W' || letter == 'Y') {
+            if (letter == 'F' || letter == 'H' || letter == 'V' || letter == 'W' || letter == 'Y')
+            {
                 totalScore += 4;
             }
-            if (letter == 'K') {
+            if (letter == 'K')
+            {
                 totalScore += 5;
             }
-            if (letter == 'J' || letter == 'X') {
+            if (letter == 'J' || letter == 'X')
+            {
                 totalScore += 8;
             }
-            if (letter == 'Q' || letter == 'Z') {
+            if (letter == 'Q' || letter == 'Z')
+            {
                 totalScore += 10;
             }
-            if (word.chars().anyMatch(c -> !Character.isAlphabetic(c))) {
-                System.out.println("invalid entry try again");
-                break;
-            }
 
-
+            //0 points for symbols like dashes
+            //idk why this would allowed in scrabble but whatever
 
         }
-
         return(totalScore);
-
     }
 
-    public int getTotalScore() {
-        return totalScore;
-    }
-    public void printScore(){
-        System.out.println("Your total score is " + word + ": " + totalScore);
+    public void printScore()
+    {
+        System.out.println("Your total score is for '" + word + "': " + totalScore);
     }
 }
 
